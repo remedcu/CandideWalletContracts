@@ -43,7 +43,7 @@ jobs:
 
       - name: Verify rule ${{ matrix.rule }}
         run: |
-          if [ -n "${{ secrets.CERTORA_KEY }}" ]; then
+          if [[ -n "${#CERTORA_KEY}" ]]; then
             certoraRun certora/conf/${{ matrix.rule }}.conf --wait_for_results=all
           else
             echo "CERTORA_KEY secret is not present, skipping certoraRun command."
